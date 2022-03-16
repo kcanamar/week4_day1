@@ -32,18 +32,33 @@ let winner; // this can be 3 things X/O, Tie, or null
 
 /* ------------ Cached Element Referances --------------- */
 // message container - h2 
+const domMessage = document.querySelector('h2');
+
 // the game board spaces
+const domSquares = document.querySelectorAll('.square') // contains array of squares
+
 // reset button
+const resetButton = document.querySelector('.reset') 
+
+const gameBoard = document.querySelector('.gameboard')
 
 /* ------------ Event Listeners --------------- */
 // mouse click on the 9 squares
+gameBoard.addEventListener("click", handleMove); // game squares through delegation
+
 // mouse click on reset button
+resetButton.addEventListener("click", init);
+
 // optional - user initiates game start
 
 
 /* ------------ Functions --------------- */
 // initialize (start) game
+// init()
+
 // handle user interaction 
+// handleMove()
+
 // Bonus- render choice to the DOM
 // check for 3 in a row - winner (main game logic)
 // render messages to the DOM
