@@ -54,11 +54,24 @@ resetButton.addEventListener("click", init);
 
 /* ------------ Functions --------------- */
 // initialize (start) game
+function init() {
+    console.log("init funciton called")
+}
 // init()
 
 // handle user interaction 
+function handleMove() {
+    console.log("handleMove function called")
+}
 // handleMove()
 
-// Bonus- render choice to the DOM
 // check for 3 in a row - winner (main game logic)
+function checkForWinner() {
+    console.log("check for winner called")
+}
+
 // render messages to the DOM
+function render() {
+    console.log("render function called")
+}
+// Bonus- render choice to the DOM
