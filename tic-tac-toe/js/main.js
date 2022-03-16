@@ -56,12 +56,27 @@ resetButton.addEventListener("click", init);
 // initialize (start) game
 function init() {
     console.log("init funciton called")
+    // we need a data set to keep track of our player moves
+    board = new Array(9).fill(null) // [null,null,null....] x9 - tracks game play
+    turn = 1; // X goes first
+    winner = null; // set initial winner to no one
 }
-// init()
+
+// starts the game on page load
+init()
 
 // handle user interaction 
-function handleMove() {
-    console.log("handleMove function called")
+function handleMove(event) {
+    // console.log(`${event.target.dataset.square} was clicked`); // dataset.square console.logs the "data-" tag square
+    const squareNumber = parseInt(event.target.dataset.square);
+    // set the index in the board array so we know that spot has been claimed
+    board[squareNumber] = turn
+    // switched the turn
+    turn *= -1
+    // check for winner
+    winner = checkForWinner()
+    // render message to user
+    render()
 }
 // handleMove()
 
