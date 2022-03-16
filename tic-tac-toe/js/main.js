@@ -16,9 +16,17 @@ console.log("JavaScript is on")
 /* ------------ Cached Element Referances --------------- */
 // the game board spaces
 // reset button
+// message container - h1 
 
 /* ------------ Event Listeners --------------- */
+// mouse click on the 9 squares
+// mouse click on reset button
+// optional - user initiates game start
 
 
 /* ------------ Functions --------------- */
-
+// initialize (start) game
+// handle user interaction 
+// Bonus- render choice to the DOM
+// check for 3 in a row - winner (main game logic)
+// render messages to the DOM
