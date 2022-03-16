@@ -60,6 +60,7 @@ function init() {
     board = new Array(9).fill(null) // [null,null,null....] x9 - tracks game play
     turn = 1; // X goes first
     winner = null; // set initial winner to no one
+    render();
 }
 
 // starts the game on page load
@@ -69,24 +70,60 @@ init()
 function handleMove(event) {
     // console.log(`${event.target.dataset.square} was clicked`); // dataset.square console.logs the "data-" tag square
     const squareNumber = parseInt(event.target.dataset.square);
+    //
+    if (board[squareNumber] || winner) {
+        return 
+    }
     // set the index in the board array so we know that spot has been claimed
-    board[squareNumber] = turn
-    // switched the turn
-    turn *= -1
+    board[squareNumber] = turn;
     // check for winner
-    winner = checkForWinner()
+    winner = checkForWinner();
+    // switched the turn
+    turn *= -1;
     // render message to user
-    render()
+    render();
 }
 // handleMove()
 
 // check for 3 in a row - winner (main game logic)
 function checkForWinner() {
     console.log("check for winner called")
+    // this can be 3 things X/O, Tie, or null
+    // if (board[COMBOS[0[0]]] === turn && board[COMBOS[0[1]]] === turn && board[COMBOS[0[2]]] === turn) {}
+    for (let index in COMBOS) {
+        if (
+            board[COMBOS[index][0]] == turn &&
+            board[COMBOS[index][1]] == turn &&
+            board[COMBOS[index][2]] == turn 
+            ) {
+                return turn
+            }
+    }
+    // makes sure that the game deos not end and the winner state stays null
+    if (board.includes(null)) {
+        return null
+    }
+
+    return "tie"
 }
 
 // render messages to the DOM
 function render() {
-    console.log("render function called")
+    // console.log("render function called")
+    board.forEach(function(value, index) {
+        domSquares[index].textContent = PLAYERS[value] // puts an X or O on the board mapped from board 
+    })
+
+    if (!winner) {
+        // tell whos turn it is
+        domMessage.textContent = `${PLAYERS[turn]}'s turn`
+    } else if (winner === "tie") {
+        // tell the user there is a tie
+        domMessage.textContent = "The game is a tie!"
+    } else {
+        // the users who the winner using a game state variable
+        domMessage.textContent = `${PLAYERS[winner]} Wins!`
+    }
+
 }
 // Bonus- render choice to the DOM
